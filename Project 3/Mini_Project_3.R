@@ -1,0 +1,131 @@
+#Problem 1 a)
+
+#Solution in report
+
+#Problem 1 b) Calculating the mean squared error for MLE and MOM
+
+# n = 1, 2, 3, 5, 10, 30
+# Theta = 1, 5, 50, 100
+
+#Function returns the MLE and MOM of the sample
+MLE_MOM <- function(n, theta)
+{
+  sample = runif(n, min = 0, max = theta)
+  mle = mean(sample)
+  mom = 2*mean(sample)
+  return(c(mle, mom))
+}
+
+#Function calculates and returns the mean squared error of MLE and MOM
+mean_squared_error <- function(n, theta)
+{
+  estimate = replicate(1000, MLE_MOM(n, theta))
+  estimate = (estimate - theta)^2
+  estimate_MLE = estimate[c(FALSE, TRUE)]
+  estimate_MOM = estimate[c(TRUE, FALSE)]
+  
+  mean_MLE = mean(estimate_MLE)
+  mean_MOM = mean(estimate_MOM)
+  
+  return(c(mean_MLE, mean_MOM))
+}
+
+#Mean squared error for combination of n = 1 and theta = 1
+mse_1_1 =mean_squared_error(1, 1)
+mse_1_1
+#Problem 1 c) Remaining combinations with graphical representation
+
+#All combinations where n = 1
+mse_1_1 =mean_squared_error(1, 1)
+mse_1_5 =mean_squared_error(1, 5)
+mse_1_50 =mean_squared_error(1, 50)
+mse_1_100 =mean_squared_error(1, 100)
+
+#All combinations where n = 2
+mse_2_1 =mean_squared_error(2, 1)
+mse_2_5 =mean_squared_error(2, 5)
+mse_2_50 =mean_squared_error(2, 50)
+mse_2_100 =mean_squared_error(2, 100)
+
+#All combinations where n = 3
+mse_3_1 =mean_squared_error(3, 1)
+mse_3_5 =mean_squared_error(3, 5)
+mse_3_50 =mean_squared_error(3, 50)
+mse_3_100 =mean_squared_error(3, 100)
+
+#All combinations where n = 5
+mse_5_1 =mean_squared_error(5, 1)
+mse_5_5 =mean_squared_error(5, 5)
+mse_5_50 =mean_squared_error(5, 50)
+mse_5_100 =mean_squared_error(5, 100)
+
+#All combinations where n = 10
+mse_10_1 =mean_squared_error(10, 1)
+mse_10_5 =mean_squared_error(10, 5)
+mse_10_50 =mean_squared_error(10, 50)
+mse_10_100 =mean_squared_error(10, 100)
+
+#All combinations where n = 30
+mse_30_1 =mean_squared_error(30, 1)
+mse_30_5 =mean_squared_error(30, 5)
+mse_30_50 =mean_squared_error(30, 50)
+mse_30_100 =mean_squared_error(30, 100)
+
+#Plotting graph with varying theta from 1 to 100 while n is constant at n.
+par(mfrow=c(3,2))
+plot(c(1, 5, 50, 100), c(mse_1_1[1], mse_1_5[1], mse_1_50[1], mse_1_100[1]), type = "b", xlab = 'Theta', ylab = 'MSE', col = 'red', main = "n = 1")
+lines(c(1, 5, 50, 100), c(mse_1_1[2], mse_1_5[2], mse_1_50[2], mse_1_100[2]), type = "b", col = 'blue')
+
+plot(c(1, 5, 50, 100), c(mse_2_1[1], mse_2_5[1], mse_2_50[1], mse_2_100[1]), type = "b", xlab = 'Theta', ylab = 'MSE', col = 'red', main = "n = 2")
+lines(c(1, 5, 50, 100), c(mse_2_1[2], mse_2_5[2], mse_2_50[2], mse_2_100[2]), type = "b", col = 'blue')
+
+plot(c(1, 5, 50, 100), c(mse_3_1[1], mse_3_5[1], mse_3_50[1], mse_3_100[1]), type = "b", xlab = 'Theta', ylab = 'MSE', col = 'red', main = "n = 3")
+lines(c(1, 5, 50, 100), c(mse_3_1[2], mse_3_5[2], mse_3_50[2], mse_3_100[2]), type = "b", col = 'blue')
+
+plot(c(1, 5, 50, 100), c(mse_5_1[1], mse_5_5[1], mse_5_50[1], mse_5_100[1]), type = "b", xlab = 'Theta', ylab = 'MSE', col = 'red', main = "n = 5")
+lines(c(1, 5, 50, 100), c(mse_5_1[2], mse_5_5[2], mse_5_50[2], mse_5_100[2]), type = "b", col = 'blue')
+
+plot(c(1, 5, 50, 100), c(mse_10_1[1], mse_10_5[1], mse_10_50[1], mse_10_100[1]), type = "b", xlab = 'Theta', ylab = 'MSE', col = 'red', main = "n = 10")
+lines(c(1, 5, 50, 100), c(mse_10_1[2], mse_10_5[2], mse_10_50[2], mse_10_100[2]), type = "b", col = 'blue')
+
+plot(c(1, 5, 50, 100), c(mse_30_1[1], mse_30_5[1], mse_30_50[1], mse_30_100[1]), type = "b", xlab = 'Theta', ylab = 'MSE', col = 'red', main = "n = 30")
+lines(c(1, 5, 50, 100), c(mse_30_1[2], mse_30_5[2], mse_30_50[2], mse_30_100[2]), type = "b", col = 'blue')
+
+#Plotting graph with varying n while theta is constant at ??
+par(mfrow=c(2,2))
+plot(c(1, 2, 3, 5, 10, 30), c(mse_1_1[1], mse_2_1[1], mse_3_1[1], mse_5_1[1], mse_10_1[1], mse_30_1[1]), type = "b", xlab = 'Theta', ylab = 'MSE', col = 'red', main = "n = 1")
+lines(c(1, 2, 3, 5, 10, 30), c(mse_1_1[2], mse_2_1[2], mse_3_1[2], mse_5_1[1], mse_10_1[2], mse_30_1[2]), type = "b", col = 'blue')
+
+plot(c(1, 2, 3, 5, 10, 30), c(mse_1_5[1], mse_2_5[1], mse_3_5[1], mse_5_5[1], mse_10_5[1], mse_30_5[1]), type = "b", xlab = 'Theta', ylab = 'MSE', col = 'red', main = "n = 5")
+lines(c(1, 2, 3, 5, 10, 30), c(mse_1_5[2], mse_2_5[2], mse_3_5[2], mse_5_5[1], mse_10_5[2], mse_30_5[2]), type = "b", col = 'blue')
+
+plot(c(1, 2, 3, 5, 10, 30), c(mse_1_50[1], mse_2_50[1], mse_3_50[1], mse_5_50[1], mse_10_50[1], mse_30_50[1]), type = "b", xlab = 'Theta', ylab = 'MSE', col = 'red', main = "n = 50")
+lines(c(1, 2, 3, 5, 10, 30), c(mse_1_50[2], mse_2_50[2], mse_3_50[2], mse_5_50[1], mse_10_50[2], mse_30_50[2]), type = "b", col = 'blue')
+
+plot(c(1, 2, 3, 5, 10, 30), c(mse_1_100[1], mse_2_100[1], mse_3_100[1], mse_5_100[1], mse_10_100[1], mse_30_100[1]), type = "b", xlab = 'Theta', ylab = 'MSE', col = 'red', main = "n = 100")
+lines(c(1, 2, 3, 5, 10, 30), c(mse_1_100[2], mse_2_100[2], mse_3_100[2], mse_5_100[1], mse_10_100[2], mse_30_100[2]), type = "b", col = 'blue')
+
+
+
+
+
+
+
+
+
+
+# 2 c) R code to mimize the function
+neg.loglikelihood <- function (par, dat){
+  result = length(dat)*log(par) - (par + 1) * sum(log(dat))
+  return(-result)
+}
+
+x <- c(21.42, 14.65, 50.42, 28.78, 11.23)
+#Function to minimize the derived function negative value
+mle <- optim(par=0.926, fn=neg.loglikelihood, method="L-BFGS-B", hessian = TRUE, lower = 0.01, dat=x)
+
+SE <- (1/mle$hessian)^(0.5)
+SE
+#Use to find the confidence interval
+mle$par + c(-1, 1)*SE*qnorm(0.975)
+

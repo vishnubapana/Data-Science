@@ -1,0 +1,55 @@
+1k-TEST 1-5:
+> x1k = replicate(1000, max(rexp(n=1, rate=1/10), rexp(n=1, rate=1/10)))
+> mean(x1k)
+[1] 15.27269
+> 1-pexp(15, rate = 1/(mean(x1k)))
+[1] 0.3745067
+> x1k = replicate(1000, max(rexp(n=1, rate=1/10), rexp(n=1, rate=1/10)))
+> mean(x1k)
+[1] 14.81808
+> 1-pexp(15, rate = 1/(mean(x1k)))
+[1] 0.3633907
+> x1k = replicate(1000, max(rexp(n=1, rate=1/10), rexp(n=1, rate=1/10)))
+> mean(x1k)
+[1] 14.99583
+> 1-pexp(15, rate = 1/(mean(x1k)))
+[1] 0.3677772
+> x1k = replicate(1000, max(rexp(n=1, rate=1/10), rexp(n=1, rate=1/10)))
+> mean(x1k)
+[1] 14.68535
+> 1-pexp(15, rate = 1/(mean(x1k)))
+[1] 0.3600811
+> x1k = replicate(1000, max(rexp(n=1, rate=1/10), rexp(n=1, rate=1/10)))
+> mean(x1k)
+[1] 14.6079
+> 1-pexp(15, rate = 1/(mean(x1k)))
+[1] 0.3581364
+
+
+
+100k-TEST 1-5:
+> x100k = replicate(100000, max(rexp(n=1, rate=1/10), rexp(n=1, rate=1/10)))
+> mean(x100k)
+[1] 14.99465
+> 1-pexp(15, rate = 1/(mean(x100k)))
+[1] 0.3677482
+> x100k = replicate(100000, max(rexp(n=1, rate=1/10), rexp(n=1, rate=1/10)))
+> mean(x100k)
+[1] 14.96038
+> 1-pexp(15, rate = 1/(mean(x100k)))
+[1] 0.3669065
+> x100k = replicate(100000, max(rexp(n=1, rate=1/10), rexp(n=1, rate=1/10)))
+> mean(x100k)
+[1] 14.96291
+> 1-pexp(15, rate = 1/(mean(x100k)))
+[1] 0.3669686
+> x100k = replicate(100000, max(rexp(n=1, rate=1/10), rexp(n=1, rate=1/10)))
+> mean(x100k)
+[1] 15.0092
+> 1-pexp(15, rate = 1/(mean(x100k)))
+[1] 0.3681049
+> x100k = replicate(100000, max(rexp(n=1, rate=1/10), rexp(n=1, rate=1/10)))
+> mean(x100k)
+[1] 14.98172
+> 1-pexp(15, rate = 1/(mean(x100k)))
+[1] 0.3674308

@@ -1,0 +1,74 @@
+TEST 1:
+> x = max(rexp(n=1, rate=1/10), rexp(n=1, rate=1/10))
+> x10k = replicate(10000, max(rexp(n=1, rate=1/10), rexp(n=1, rate=1/10)))
+> hist(x10k, prob = TRUE)
+> pdf = function(x){
++   return (0.2*exp(-0.1*x)-0.2*exp(-0.2*x))
++ }
+> curve(pdf(x), add = TRUE)
+> 
+> mean(x10k)
+[1] 14.93673
+> 
+> 1-pexp(15, rate = 1/(mean(x10k)))
+[1] 0.3663244
+################################################################################
+TEST 2:
+> x = max(rexp(n=1, rate=1/10), rexp(n=1, rate=1/10))
+> x10k = replicate(10000, max(rexp(n=1, rate=1/10), rexp(n=1, rate=1/10)))
+> hist(x10k, prob = TRUE)
+> pdf = function(x){
++   return (0.2*exp(-0.1*x)-0.2*exp(-0.2*x))
++ }
+> curve(pdf(x), add = TRUE)
+> 
+> mean(x10k)
+[1] 15.0346
+> 
+> 1-pexp(15, rate = 1/(mean(x10k)))
+[1] 0.3687271
+################################################################################
+TEST 3:
+> x = max(rexp(n=1, rate=1/10), rexp(n=1, rate=1/10))
+> x10k = replicate(10000, max(rexp(n=1, rate=1/10), rexp(n=1, rate=1/10)))
+> hist(x10k, prob = TRUE)
+> pdf = function(x){
++   return (0.2*exp(-0.1*x)-0.2*exp(-0.2*x))
++ }
+> curve(pdf(x), add = TRUE)
+> 
+> mean(x10k)
+[1] 14.88006
+> 
+> 1-pexp(15, rate = 1/(mean(x10k)))
+[1] 0.364926
+################################################################################
+TEST 4:
+> x = max(rexp(n=1, rate=1/10), rexp(n=1, rate=1/10))
+> x10k = replicate(10000, max(rexp(n=1, rate=1/10), rexp(n=1, rate=1/10)))
+> hist(x10k, prob = TRUE)
+> pdf = function(x){
++   return (0.2*exp(-0.1*x)-0.2*exp(-0.2*x))
++ }
+> curve(pdf(x), add = TRUE)
+> 
+> mean(x10k)
+[1] 15.00983
+> 
+> 1-pexp(15, rate = 1/(mean(x10k)))
+[1] 0.3681205
+################################################################################
+TEST 5:
+> x = max(rexp(n=1, rate=1/10), rexp(n=1, rate=1/10))
+> x10k = replicate(10000, max(rexp(n=1, rate=1/10), rexp(n=1, rate=1/10)))
+> hist(x10k, prob = TRUE)
+> pdf = function(x){
++   return (0.2*exp(-0.1*x)-0.2*exp(-0.2*x))
++ }
+> curve(pdf(x), add = TRUE)
+> 
+> mean(x10k)
+[1] 14.86456
+> 
+> 1-pexp(15, rate = 1/(mean(x10k)))
+[1] 0.3645427
